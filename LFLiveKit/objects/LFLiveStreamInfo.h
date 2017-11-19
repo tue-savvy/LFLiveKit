@@ -39,7 +39,8 @@ typedef NS_ENUM (NSUInteger, LFLiveSocketErrorCode) {
 @interface LFLiveStreamInfo : NSObject
 
 @property (nonatomic, copy) NSString *streamId;
-
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *password;
 #pragma mark -- FLV
 @property (nonatomic, copy) NSString *host;
 @property (nonatomic, assign) NSInteger port;

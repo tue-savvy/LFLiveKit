@@ -100,19 +100,19 @@ class ViewController: UIViewController, LFLiveSessionDelegate {
         print("liveStateDidChange: \(state.rawValue)")
         switch state {
         case LFLiveState.ready:
-            stateLabel.text = "未连接"
+            stateLabel.text = "Ready"
             break;
         case LFLiveState.pending:
-            stateLabel.text = "连接中"
+            stateLabel.text = "Pending"
             break;
         case LFLiveState.start:
-            stateLabel.text = "已连接"
+            stateLabel.text = "Start"
             break;
         case LFLiveState.error:
-            stateLabel.text = "连接错误"
+            stateLabel.text = "Error"
             break;
         case LFLiveState.stop:
-            stateLabel.text = "未连接"
+            stateLabel.text = "Stop"
             break;
         default:
                 break;
@@ -125,12 +125,14 @@ class ViewController: UIViewController, LFLiveSessionDelegate {
     func didTappedStartLiveButton(_ button: UIButton) -> Void {
         startLiveButton.isSelected = !startLiveButton.isSelected;
         if (startLiveButton.isSelected) {
-            startLiveButton.setTitle("结束直播", for: UIControlState())
+            startLiveButton.setTitle("Stop", for: UIControlState())
             let stream = LFLiveStreamInfo()
-            stream.url = "rtmp://live.hkstv.hk.lxdns.com:1935/live/stream153"
+            stream.url = "rtmp://1080p.pri.zerouno.fmspush.llnw.net/zerouno/test";
+            stream.username = "zerouno";
+            stream.password = "6w5vTdTNMM";
             session.startLive(stream)
         } else {
-            startLiveButton.setTitle("开始直播", for: UIControlState())
+            startLiveButton.setTitle("Start", for: UIControlState())
             session.stopLive()
         }
     }
@@ -206,7 +208,7 @@ class ViewController: UIViewController, LFLiveSessionDelegate {
         let startLiveButton = UIButton(frame: CGRect(x: 30, y: UIScreen.main.bounds.height - 50, width: UIScreen.main.bounds.width - 10 - 44, height: 44))
         startLiveButton.layer.cornerRadius = 22
         startLiveButton.setTitleColor(UIColor.black, for:UIControlState())
-        startLiveButton.setTitle("开始直播", for: UIControlState())
+        startLiveButton.setTitle("Start", for: UIControlState())
         startLiveButton.titleLabel!.font = UIFont.systemFont(ofSize: 14)
         startLiveButton.backgroundColor = UIColor(colorLiteralRed: 50, green: 32, blue: 245, alpha: 1)
         return startLiveButton
